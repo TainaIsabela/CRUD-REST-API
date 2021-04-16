@@ -1,0 +1,29 @@
+{
+  "name": "node-api-crud",
+  "version": "1.0.0",
+  "description": "Código desenvolvido baseado nas gravações das videos aulas sobre: CRUD com Node.Js + MongoDb + Express.js, através do canal do Youtube Glaucia Lemos",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/"
+  },
+  "dependencies": {
+    "body-parser": "~1.18.1",
+    "express": "~4.15.4",
+    "git": "^0.1.5",
+    "mongoose": "~4.11.12",
+    "request": "~2.82.0"
+  },
+  "author": "Tainá Isabela",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/"
+  },
+  "homepage": "https://github.com/",
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}
