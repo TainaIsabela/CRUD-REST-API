@@ -13,7 +13,9 @@ var app = express();
 var bodyParser = require('body-parser');
 var moongose = require('mongoose');
 var Produto = require('./app/models/produto');
-const { Router } = require('express');
+const {
+    Router
+} = require('express');
 
 //Maneira Local:MongoDB:
 moongose.connect('mongodb://localhost:27017/node-crud-api', {
@@ -32,7 +34,7 @@ var port = process.env.port || 8000;
 //Criando uma instância das Rotas via Express:
 var router = express.Router();
 //Rota de exemplo:
-router.use(function(req, res, next){
+router.use(function (req, res, next) {
     console.log('Algo está acontecendo aqui...');
     next();
 });
@@ -43,6 +45,30 @@ router.get('/', function (req, res) {
 });
 //API's:
 //====================================================
+//Rotas que terminarem com '/produtos' (servir: GET ALL & POST)
+router.route('/produtos')
+    /**
+     * 1) Método: Criar Produto (acessar em : POST http://localhost:8000/api/produtos)
+     */
+    .post(function (req, res) {
+        var produto = new Produto();
+
+
+        //Setar os campos do Produto (via request):
+
+        produto.nome = req.body.nome;
+        produto.preco = req.body.preco;
+        produto.descricao = req.body.descricao;
+
+        produto.save(function (error) {
+            if (error) res.send('Erro ao tentar salvar o produto... ' + error);
+            res.json({
+                message: 'Produto Cadastrado com Sucesso!'
+
+            });
+        });
+    });
+
 
 
 //Definindo um padrão das rotas prefixadas: '/api':
