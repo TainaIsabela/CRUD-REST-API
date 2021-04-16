@@ -110,6 +110,21 @@ router.route('/produtos/:produto_id')
             });
         });
     })
+    /**
+     * 5) Método: Deletar Produto por ID (acessar em : GET http://localhost:8000/api/produtos/:produtos_id)
+     **/
+    .delete(function (req, res) {
+        Produto.remove({
+            _id: req.params.produto_id
+        }, function (error) {
+            if (error)
+                res.send('Id do Produto não encontrado..:'+error);
+            res.json({
+                message: 'Produto Excluído com Sucesso!'
+            });
+
+        });
+    })
 
 //Definindo um padrão das rotas prefixadas: '/api':
 app.use('/api', router);
